@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework_swagger',
+    'core',
+    'library_resources',
+    'clients',
+    'resource_management',
+    'django_extensions',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -73,11 +79,18 @@ WSGI_APPLICATION = 'ResourceCentre.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
+AUTH_USER_MODEL = 'clients.Member'
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'resource_db',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+        'PORT': '5432',
+        'TEST': {
+            'NAME': 'resource_db_test'
+        }
     }
 }
 
